@@ -28,6 +28,14 @@ export interface AuthContextProps {
 
 }
 
+export interface CategoryInputField {
+  label: string;
+  name: "name" | "description" | "image";
+  type: "text" | "file";
+  isTextarea?: boolean;
+  required?: boolean;
+}
+
 export type AuthAction =
   | {
       type: "Open_Dialog";
