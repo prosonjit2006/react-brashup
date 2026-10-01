@@ -25,7 +25,14 @@ export interface AuthContextProps {
   registeruser: (payload: SignupPayload) => Promise<any>;
   loginuser: (payload: LoginPayload) => Promise<any>;
   verifyEmailuser: (payload: VERIFY_EMAIL_Payload) => Promise<any>;
+}
 
+export interface CategoryInputField {
+  label: string;
+  name: "name" | "description" | "image";
+  type: "text" | "file";
+  isTextarea?: boolean;
+  required?: boolean;
 }
 
 export type AuthAction =
@@ -101,8 +108,15 @@ export interface LoginInputField {
   required?: boolean;
 }
 
-
 export interface VERIFY_EMAIL_Payload {
   email: CookieValueTypes | Promise<CookieValueTypes>;
   otp: string;
+}
+
+// ! category
+
+export interface CategoryPayload {
+  name: string;
+  description: string;
+  image: File | null;
 }
