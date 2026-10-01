@@ -8,9 +8,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginSchema } from '@/services/validation/login.validation';
 import useAuth from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
     const auth = useAuth();
+
+    const router = useRouter()
 
    const {
      register,
@@ -28,7 +31,10 @@ const LoginForm = () => {
   
     const onSubmit = async (data: LoginPayload) => {
       // console.log(data);
-      const res = await auth.registeruser(data)
+      const res = await auth.loginuser(data)
+      if(res.success){
+        router.push("/admin/dashboard")
+      }
       console.log("res in signup page", res)
     };
 
